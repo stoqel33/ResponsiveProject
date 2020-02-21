@@ -1,0 +1,22 @@
+table{
+  width: 100%;
+
+  thead{
+    border-bottom: 2px solid darken( $main-color,30%);
+    color: $font-color;
+    background-color: $main-color;
+  }
+
+  tr{
+    border-bottom: 1px solid #ccc;
+  }
+
+  th,th{
+    padding: $main-spacing /2;
+  }
+
+  td{
+    padding: $main-spacing/4 0;
+    text-align: center;
+  }
+}
