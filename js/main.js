@@ -9,6 +9,14 @@ const valuesContainer = document.querySelector('.main--container');
 
 const desktopView = window.matchMedia('screen and (min-width: 500px)');
 
+const drawValues = (isDesktop) => {
+  if (isDesktop) {
+    drawDesktop();
+  } else {
+    drawMobile();
+  }
+}
+
 const drawDesktop = () => {
   valuesContainer.innerHTML = '';
 
@@ -27,4 +35,40 @@ const drawDesktop = () => {
   valuesContainer.appendChild(table);
 }
 
-drawDesktop();
+const drawMobile = () => {
+  valuesContainer.innerHTML = '';
+
+  let list = document.createElement('ul');
+
+  values.forEach(value => {
+    let item = document.createElement('li');
+    let name = document.createElement('div');
+    let calories = document.createElement('div');
+    let fat = document.createElement('div');
+    let carbs = document.createElement('div');
+
+    name.innerHTML = `<strong>Nazwa: </strong>${value.name}`;
+    calories.innerHTML = `<strong>Kalorie: </strong>${value.calories}`;
+    fat.innerHTML = `<strong>Tłuszcz: </strong>${value.fat}`;
+    carbs.innerHTML = `<strong>Węglowodany: </strong>${value.carbs}`;
+
+    item.appendChild(name);
+    item.appendChild(calories);
+    item.appendChild(fat);
+    item.appendChild(carbs);
+
+    list.appendChild(item);
+  })
+
+  valuesContainer.appendChild(list);
+}
+
+//drawDesktop();
+
+//drawMobile();
+
+drawValues(desktopView.matches);
+
+desktopView.addListener(isDesktop => {
+  drawValues(isDesktop.matches);
+})
