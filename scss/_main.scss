@@ -1,0 +1,14 @@
+.main{
+
+  &--description{
+    margin: $main-spacing 0;
+  }
+
+  &--image{
+    margin: $main-spacing 0;
+  }
+
+  thead{
+    color: white;
+  }
+}
